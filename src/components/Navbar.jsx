@@ -3,7 +3,7 @@ function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <img src="./assets/Logo.png" alt="Logo" />
+        <img src="./Logo.png" alt="Logo" />
       </div>
 
       <ul className="navbar-links">
