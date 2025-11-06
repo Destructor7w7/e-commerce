@@ -1,7 +1,75 @@
-.top-bar {
-  background-color: #222;
-  color: white;
-  padding: 8px;
-  font-size: 14px;
-  text-align: center;
+.topbar {
+    width: 100%;
+    background-color: #222;
+    position: relative;
+    overflow: hidden;
+}
+
+.topbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    animation: slideDown 0.5s ease-out;
+}
+
+.topbar-content {
+    color: white;
+    font-size: 17px;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+.topbar a {
+    color: #646cff;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0;
+    padding: 3px 8px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.topbar a:hover {
+    background-color: rgba(100, 108, 255, 0.1);
+    color: #535bf2;
+}
+
+.emoji {
+    display: inline-block;
+    animation: bounce 2s infinite;
+    margin: 0;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
 }

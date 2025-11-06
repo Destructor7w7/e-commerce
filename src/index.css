@@ -1,7 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Jersey+15&display=swap');
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  /* Definición de fuentes */
+  --font-primary: "Jersey 15", sans-serif;
+  --font-secondary: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  
+  line-height: 1;
   font-weight: 400;
+  font-family: var(--font-primary);
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -54,32 +60,66 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* Nagevigation bar styles */
+/* Navigation bar styles */
 .navbar {
   width: 100%;
   background: #1a1a1a;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 24px;
+  padding: 20px 48px; /* Aumentado el padding interno */
   box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
 }
 
 .navbar-logo img {
-  height: 40px; /* Ajusta tamaño del logo */
+  height: 45px; /* Logo ligeramente más grande */
+  transition: transform 0.3s ease; /* Animación al hacer hover */
+}
+
+.navbar-logo img:hover {
+  transform: scale(1.05); /* Crece ligeramente al pasar el mouse */
 }
 
 .navbar-links {
   list-style: none;
   display: flex;
-  gap: 24px;
+  gap: 40px; /* Mayor separación entre enlaces */
   margin: 0;
   padding: 0;
 }
 
 .navbar-links a {
   color: white;
-  font-size: 16px;
+  font-size: 20px;
+  font-family: var(--font-primary);
+  text-decoration: none;
+  padding: 8px 16px; /* Padding para área de clic más grande */
+  border-radius: 4px;
+  transition: all 0.3s ease; /* Animación suave para todos los cambios */
+  position: relative;
+}
+
+.navbar-links a:hover {
+  color: #646cff; /* Color del enlace al hover */
+  background-color: rgba(255, 255, 255, 0.1); /* Fondo sutil al hover */
+}
+
+/* Efecto de línea debajo del enlace */
+.navbar-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: #646cff;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.navbar-links a:hover::after {
+  width: 70%; /* La línea se expande al hacer hover */
 }
 
 
