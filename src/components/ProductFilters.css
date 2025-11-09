@@ -1,0 +1,58 @@
+.filters-container {
+  padding: 1.5rem;
+  background: white;
+  border-right: 1px solid #eee;
+  height: 100%;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+}
+
+.filter-section {
+  margin-bottom: 2rem;
+}
+
+.filter-section h4 {
+  margin-bottom: 1rem;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.filter-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.filter-section button {
+  background: none;
+  border: none;
+  padding: 0.5rem 0;
+  color: #666;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: color 0.3s ease;
+}
+
+.filter-section button:hover {
+  color: #646cff;
+}
+
+.price-range {
+  padding: 0.5rem 0;
+}
+
+.price-slider {
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.price-inputs {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.price-inputs input {
+  width: 50%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}

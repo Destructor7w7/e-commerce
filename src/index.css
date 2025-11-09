@@ -28,12 +28,21 @@ a:hover {
   color: #535bf2;
 }
 
-/* ❌ Quitamos el flex que centraba todo */
+/* Reset de márgenes y padding */
 body {
   margin: 0;
+  padding: 0;
   min-width: 320px;
   min-height: 100vh;
   display: block;
+  box-sizing: border-box;
+}
+
+/* Aseguramos que todos los elementos hereden border-box */
+*, *::before, *::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
@@ -67,26 +76,98 @@ button:focus-visible {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 48px; /* Aumentado el padding interno */
+  padding: 20px 48px;
   box-sizing: border-box;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
 }
 
 .navbar-logo img {
-  height: 45px; /* Logo ligeramente más grande */
-  transition: transform 0.3s ease; /* Animación al hacer hover */
+  height: 45px;
+  transition: transform 0.3s ease;
 }
 
 .navbar-logo img:hover {
-  transform: scale(1.05); /* Crece ligeramente al pasar el mouse */
+  transform: scale(1.05);
 }
 
 .navbar-links {
   list-style: none;
   display: flex;
-  gap: 40px; /* Mayor separación entre enlaces */
+  gap: 40px;
   margin: 0;
   padding: 0;
+}
+
+/* Hamburger Menu Styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+}
+
+.hamburger-line {
+  width: 30px;
+  height: 3px;
+  background-color: white;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.hamburger.active .hamburger-line:nth-child(1) {
+  transform: translateY(11px) rotate(45deg);
+}
+
+.hamburger.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active .hamburger-line:nth-child(3) {
+  transform: translateY(-11px) rotate(-45deg);
+}
+
+/* Media Query para móviles */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 20px;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .navbar-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 100%;
+    max-width: 300px;
+    background: #1a1a1a;
+    flex-direction: column;
+    gap: 20px;
+    padding: 80px 40px;
+    transition: right 0.3s ease;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .navbar-links.active {
+    right: 0;
+  }
+
+  .navbar-links a {
+    font-size: 18px;
+    width: 100%;
+    display: block;
+    padding: 15px 0;
+  }
 }
 
 .navbar-links a {
