@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import './NotFound.css';
 
+// Página 404 simple: informa al usuario que la ruta no existe y ofrece volver al inicio
 function NotFound() {
   return (
     <div className="not-found">

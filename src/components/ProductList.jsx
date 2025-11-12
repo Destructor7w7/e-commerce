@@ -1,37 +1,21 @@
-import { useProducts } from '../context/ProductContext';
+import React, { useMemo } from 'react';
+import ProductCard from './ProductCard';
 import './ProductList.css';
 
-function ProductList() {
-  const { products, loading } = useProducts();
+// Lista de productos: filtra según búsqueda y categoría y renderiza tarjetas
+export default function ProductList({ products = [], loading = false, search = '', category = 'all', sort = 'relevance', perPage = 24, view = 'grid' }) {
+  // `products` ya viene filtrado desde Products.jsx en la mayoría de los casos.
+  const list = products || [];
 
-  if (loading) {
-    return <div className="loading">Cargando productos...</div>;
-  }
+  if (loading) return <div className="products-loading">Cargando productos...</div>;
 
-  if (products.length === 0) {
-    return <div className="no-results">No se encontraron productos con los filtros seleccionados</div>;
-  }
+  if (!list.length) return <div className="products-empty">No se encontraron productos.</div>;
 
   return (
-    <div className="products-grid">
-      {products.map(product => (
-        <div key={product.id} className="product-card">
-          <div className="product-image">
-            <img src={product.thumbnail} alt={product.title} />
-          </div>
-          <div className="product-info">
-            <h3>{product.title}</h3>
-            <p className="product-description">{product.description}</p>
-            <div className="product-price-rating">
-              <span className="price">${product.price}</span>
-              <span className="rating">⭐ {product.rating}</span>
-            </div>
-            <button className="add-to-cart">Añadir al carrito</button>
-          </div>
-        </div>
+    <div className={`product-list ${view === 'list' ? 'list-view' : 'grid-view'}`}>
+      {list.map((p) => (
+        <ProductCard key={p.id} product={p} />
       ))}
     </div>
   );
 }
-
-export default ProductList;

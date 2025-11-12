@@ -1,0 +1,13 @@
+.product-toolbar { display:flex; justify-content:space-between; align-items:center; gap:1rem; margin:1rem 0 }
+.toolbar-left { display:flex; align-items:center; gap:1rem }
+.view-icons button { margin-right:0.35rem; padding:0.4rem 0.6rem; border-radius:6px; border:1px solid rgba(0,0,0,0.06); background:#fff; color:#111; font-weight:700 }
+.view-icons button:focus { box-shadow: 0 6px 18px rgba(75,107,255,0.12); outline: none }
+.view-icons button.active { background:#111; color:#fff }
+.seen { font-size:0.85rem; color:#666 }
+.toolbar-right { display:flex; gap:1rem; align-items:center }
+.toolbar-right label { display:block; font-size:0.75rem; color:#666 }
+.per-page select, .sort-by select { padding:0.4rem 0.5rem; border-radius:6px; border:1px solid #ddd }
+
+@media (max-width:900px) {
+  .product-toolbar { flex-direction:column; align-items:flex-start }
+}

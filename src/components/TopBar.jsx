@@ -1,4 +1,6 @@
 import "./TopBar.css";
+
+// Barra superior pequeña con información de contacto o avisos.
 function TopBar() {
   return (
     <div className="topbar">

@@ -1,0 +1,73 @@
+.contact-page { padding: 3rem 2rem; display:flex; justify-content:center; background: transparent }
+.contact-card { display:grid; grid-template-columns: 1fr 460px; gap:2rem; max-width:1200px; width:100%; align-items:start }
+
+/* Forzar color oscuro dentro de la tarjeta de contacto para evitar texto blanco sobre fondo claro */
+.contact-card, .contact-left, .contact-right {
+  color: #111 !important;
+}
+
+.contact-right h2, .contact-left h1 {
+  color: #111 !important;
+}
+
+.contact-form label { color: #111 }
+
+/* Left: hero/info; Right: form */
+.contact-left {
+  background: linear-gradient(180deg,#ffffff 0%,#fbfbff 100%);
+  padding:2rem 2.5rem;
+  border-radius:14px;
+  box-shadow: 0 10px 30px rgba(3,6,23,0.25);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+}
+.contact-right {
+  background: #fff;
+  padding:1.5rem 1.25rem;
+  border-radius:12px;
+  box-shadow: 0 8px 22px rgba(3,6,23,0.18);
+}
+.brand-img { width:140px; height:auto; display:block; margin:0 0 1.25rem 0 }
+.contact-left h1 { margin:0 0 0.5rem 0; font-size:1.6rem; letter-spacing: -0.5px }
+.lead { color:#444; margin:0 0 1rem 0; max-width:560px }
+.contact-info { display:flex; flex-direction:column; gap:0.5rem; margin-top:1.25rem; align-items:center }
+.contact-info h4 { margin:0; font-size:0.9rem; color:#333 }
+.contact-info a { color:#4b6bff; text-decoration:none; font-weight:600 }
+.muted { color:#666 }
+
+/* Small details */
+.contact-left .phone { margin-top:8px; font-weight:700; color:#0a8a3b }
+
+.contact-form label { display:block; margin-bottom:0.75rem }
+.contact-form input, .contact-form textarea { width:100%; padding:0.8rem; border:1px solid #e8eefc; border-radius:10px; box-sizing:border-box; background:#fbfbff; color:#111; font-size:0.95rem }
+.contact-form input::placeholder, .contact-form textarea::placeholder { color:#9aa4b2 }
+.contact-form input:focus, .contact-form textarea:focus { outline: none; box-shadow: 0 6px 18px rgba(75,107,255,0.12); border-color:#4b6bff }
+.error { color:#b00020; font-size:0.9rem; margin-top:0.35rem }
+.form-actions { display:flex; gap:0.6rem; margin-top:0.8rem }
+.btn { display:inline-block; padding:0.65rem 1rem; border-radius:10px; text-decoration:none; border:1px solid #e6eefc; background:#f7f9ff; color:#0b0b0b; font-weight:600 }
+.btn.primary { background: linear-gradient(90deg,#5361ff,#6b4bff); color:#fff; border:none; box-shadow: 0 8px 30px rgba(75,107,255,0.18) }
+.btn.secondary { background:transparent; color:#4b6bff; border:1px solid rgba(75,107,255,0.12) }
+.note { font-size:0.9rem; color:#6b7280; margin-top:0.75rem }
+
+/* Modal simple de confirmación */
+.confirm-modal { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(3,6,23,0.55); z-index:60 }
+.confirm-body { background:#fff; padding:1.25rem; border-radius:12px; width: min(520px, 92%); box-shadow:0 30px 60px rgba(3,6,23,0.4); color: #111 }
+.confirm-actions { display:flex; gap:0.6rem; justify-content:flex-end; margin-top:1rem }
+
+/* Toast */
+.toast { position:fixed; right:20px; bottom:20px; background:#0b1220; color:#fff; padding:0.6rem 0.9rem; border-radius:10px; z-index:70; box-shadow:0 8px 30px rgba(11,18,32,0.6) }
+
+/* Ajustes responsive */
+@media (max-width:900px) {
+  .contact-card { grid-template-columns: 1fr; }
+  .contact-page { padding:1rem }
+  .contact-right { order: 2 }
+  .contact-left { order: 1 }
+}
+
+@media (max-width:900px) {
+  .contact-card { grid-template-columns: 1fr; }
+  .contact-page { padding:1rem }
+}
