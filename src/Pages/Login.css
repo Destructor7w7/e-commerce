@@ -7,8 +7,11 @@
 .btn-primary { background:#646cff; color:#fff; border:none; padding:0.6rem 0.9rem; border-radius:8px; cursor:pointer; width:100% }
 .btn-primary:disabled { opacity:0.6 }
 
+.demo-note { background:#f3f7ff; color:#062e44; padding:0.5rem; border-radius:6px; margin-bottom:0.75rem; font-size:0.95rem }
+
 @media (prefers-color-scheme: dark) {
   .login-card { background: #0f1720; color:#e6eef0 }
   .login-card input { background: #0b1114; border:1px solid #1f2933; color:#e6eef0 }
   .form-error { background:#3b0b0b; color:#ffb4b4 }
+  .demo-note { background:#11202a; color:#cfeff3 }
 }

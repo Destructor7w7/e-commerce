@@ -20,11 +20,16 @@ export function AuthProvider({ children }) {
   }, [user]);
 
   const login = async ({ email, password }) => {
-    // mock: aceptar cualquier email/password no vacío
+    // Para demo: credenciales fijas
+    const DEMO_EMAIL = 'demo@loislive.test';
+    const DEMO_PASSWORD = 'Demo1234!';
     if (!email || !password) throw new Error('Email y contraseña son requeridos');
-    // simular llamada async
-    await new Promise((r) => setTimeout(r, 400));
-    const fakeUser = { id: Date.now(), name: email.split('@')[0], email };
+    // validar credenciales
+    await new Promise((r) => setTimeout(r, 300));
+    if (email !== DEMO_EMAIL || password !== DEMO_PASSWORD) {
+      throw new Error('Credenciales inválidas. Usa la cuenta de demo.');
+    }
+    const fakeUser = { id: 1, name: 'demo', email: DEMO_EMAIL };
     setUser(fakeUser);
     return fakeUser;
   };

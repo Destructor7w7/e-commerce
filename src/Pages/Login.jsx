@@ -17,7 +17,8 @@ export default function Login() {
     setLoading(true);
     try {
       await login({ email, password });
-      navigate('/');
+      // Redirige al panel de administración tras login exitoso
+      navigate('/admin/products');
     } catch (err) {
       setError(err.message || 'Error al iniciar sesión');
     } finally {
@@ -30,6 +31,8 @@ export default function Login() {
       <form className="login-card" onSubmit={handleSubmit}>
         <h2>Iniciar sesión</h2>
         {error && <div className="form-error">{error}</div>}
+
+        <div className="demo-note">Cuenta demo: <strong>demo@loislive.test</strong> / <strong>Demo1234!</strong></div>
 
         <label>
           Email

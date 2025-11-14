@@ -48,7 +48,10 @@ function Navbar() {
         {!user ? (
           <li><Link to="/login" onClick={toggleMenu}>Login</Link></li>
         ) : (
-          <li><button onClick={() => { logout(); toggleMenu(); }} className="logout-btn">Cerrar sesión</button></li>
+          <>
+            <li><Link to="/admin/products" onClick={toggleMenu}>Panel</Link></li>
+            <li><button onClick={() => { logout(); toggleMenu(); }} className="logout-btn">Cerrar sesión</button></li>
+          </>
         )}
         <li>
           <Link to="/cart" onClick={toggleMenu} className="cart-link">

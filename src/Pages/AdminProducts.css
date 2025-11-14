@@ -1,0 +1,13 @@
+.admin-products { padding: 1.25rem }
+.admin-grid { display:flex; gap:1.25rem }
+.create-form { background:#fff; padding:1rem; border-radius:8px; width:320px; display:flex; flex-direction:column; gap:8px }
+.create-form input, .create-form textarea { padding:8px; border-radius:6px; border:1px solid #ddd }
+.create-form .btn { background:#0ea5a3; color:#fff; border:none; padding:0.6rem; border-radius:8px; cursor:pointer }
+.list-panel { flex:1 }
+.admin-table { width:100%; border-collapse:collapse }
+.admin-table th, .admin-table td { padding:8px; border-bottom:1px solid #eee; text-align:left }
+.btn { padding:6px 8px; border-radius:6px; background:#646cff; color:#fff; border:none; cursor:pointer }
+.btn.small { padding:4px 6px; font-size:0.9rem }
+.btn.danger { background:#ff3b30 }
+.error { color:#b00020 }
+@media (max-width:900px) { .admin-grid { flex-direction:column } }
