@@ -2219,6 +2219,13 @@
         "https://cdn.dummyjson.com/product-images/womens-watches/women's-wrist-watch/2.webp",
         "https://cdn.dummyjson.com/product-images/womens-watches/women's-wrist-watch/3.webp"
       ]
+    },
+    {
+      "id": "3466",
+      "title": "Test",
+      "price": 1000,
+      "description": "Este es un producto de prueba",
+      "thumbnail": ""
     }
   ]
 }

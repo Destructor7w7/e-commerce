@@ -40,23 +40,41 @@ function Products() {
   useEffect(() => {
     let mounted = true;
     setLoading(true);
-    // pedimos hasta 100 productos de prueba
-    fetch('https://dummyjson.com/products?limit=100')
-      .then((res) => {
-        if (!res.ok) throw new Error('Error al obtener productos');
-        return res.json();
-      })
-      .then((data) => {
-        if (!mounted) return;
-        // dummyjson returns { products: [...] }
-        setProducts(data.products || []);
-        setLoading(false);
-      })
-      .catch((err) => {
-        if (!mounted) return;
-        setError(err.message || 'Error');
-        setLoading(false);
-      });
+    // Intentar obtener productos desde la API local (json-server). Si falla, caer a dummyjson.
+    const LOCAL_API = 'http://localhost:4000/products';
+    const DUMMY_API = 'https://dummyjson.com/products?limit=100';
+
+    const fetchLocalThenFallback = async () => {
+      try {
+        const res = await fetch(LOCAL_API);
+        if (res.ok) {
+          const data = await res.json();
+          if (!mounted) return;
+          // json-server devuelve un array directamente
+          setProducts(Array.isArray(data) ? data : (data.products || []));
+          setLoading(false);
+          return;
+        }
+        // si la respuesta local no es ok, lanzamos para ir al fallback
+        throw new Error(`Local API responded ${res.status}`);
+      } catch (err) {
+        // fallback a dummyjson
+        try {
+          const r = await fetch(DUMMY_API);
+          if (!r.ok) throw new Error('Error al obtener productos desde dummyjson');
+          const d = await r.json();
+          if (!mounted) return;
+          setProducts(d.products || []);
+          setLoading(false);
+        } catch (err2) {
+          if (!mounted) return;
+          setError((err2 && err2.message) || 'Error al obtener productos');
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchLocalThenFallback();
     return () => (mounted = false);
   }, []);
 

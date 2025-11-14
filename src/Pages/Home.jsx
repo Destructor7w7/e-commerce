@@ -66,9 +66,9 @@ export default function Home() {
             <p>Una tienda demo para probar flujos: añade al carrito, cambia cantidades y experimenta la persistencia local.</p>
           </div>
           <div className="testimonial-cards">
-            <Testimonial name="María López" title="Compradora recurrente" text="Excelente experiencia, los productos de prueba me ayudaron a montar mi demo rápidamente." img="/placeholder-user1.png" />
-            <Testimonial name="Carlos Pérez" title="Diseñador" text="Buena usabilidad y estilos limpios. Me sirvió para presentar un prototipo a clientes." img="/placeholder-user2.png" />
-            <Testimonial name="Sofía García" title="Emprendedora" text="El carrito persistente es muy útil. Fácil de integrar y personalizar." img="/placeholder-user3.png" />
+            <Testimonial name="María López" title="Compradora recurrente" text="Excelente experiencia, los productos de prueba me ayudaron a montar mi demo rápidamente." img={`https://i.pravatar.cc/150?img=47`} />
+            <Testimonial name="Carlos Pérez" title="Diseñador" text="Buena usabilidad y estilos limpios. Me sirvió para presentar un prototipo a clientes." img={`https://i.pravatar.cc/150?img=12`} />
+            <Testimonial name="Sofía García" title="Emprendedora" text="El carrito persistente es muy útil. Fácil de integrar y personalizar." img={`https://i.pravatar.cc/150?img=65`} />
           </div>
         </div>
       </section>

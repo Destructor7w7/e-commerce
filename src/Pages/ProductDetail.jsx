@@ -16,22 +16,41 @@ export default function ProductDetail() {
   useEffect(() => {
     let mounted = true;
     setLoading(true);
-    fetch(`https://dummyjson.com/products/${id}`)
-      .then((res) => {
-        if (!res.ok) throw new Error('Producto no encontrado');
-        return res.json();
-      })
-      .then((data) => {
-        if (!mounted) return;
-        setProduct(data);
-        setMainImg((data.images && data.images[0]) || data.thumbnail);
-        setLoading(false);
-      })
-      .catch((err) => {
-        if (!mounted) return;
-        setError(err.message || 'Error al cargar producto');
-        setLoading(false);
-      });
+    // Intentar obtener el producto primero desde la API local (json-server), luego fallback a dummyjson
+    const LOCAL_API = `http://localhost:4000/products/${id}`;
+    const DUMMY_API = `https://dummyjson.com/products/${id}`;
+
+    const fetchProduct = async () => {
+      try {
+        const r = await fetch(LOCAL_API);
+        if (r.ok) {
+          const data = await r.json();
+          if (!mounted) return;
+          setProduct(data);
+          setMainImg((data.images && data.images[0]) || data.thumbnail || null);
+          setLoading(false);
+          return;
+        }
+        // si local responde 404/500 etc, intentar dummyjson
+        throw new Error(`Local API responded ${r.status}`);
+      } catch (e) {
+        try {
+          const r2 = await fetch(DUMMY_API);
+          if (!r2.ok) throw new Error('Producto no encontrado en dummyjson');
+          const data2 = await r2.json();
+          if (!mounted) return;
+          setProduct(data2);
+          setMainImg((data2.images && data2.images[0]) || data2.thumbnail || null);
+          setLoading(false);
+        } catch (err) {
+          if (!mounted) return;
+          setError(err.message || 'Error al cargar producto');
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchProduct();
     return () => (mounted = false);
   }, [id]);
 
